@@ -4,7 +4,8 @@
 
 ### AI-Powered Interview Preparation & Resume Tailoring Platform
 
-Upload your resume, paste a job description, and get a personalized interview game plan in seconds — match score, likely questions with model answers, skill gaps, a day-by-day prep schedule, and an ATS-friendly resume tailored to the role.
+**Stop guessing what the interviewer will ask.**
+Drop in your resume and a job description — InterviewIQ turns them into a personalized interview game plan in seconds: a match score, the exact questions you're likely to face (with what the interviewer is really testing and how to answer), your skill gaps ranked by severity, a day-by-day prep roadmap, and a one-click ATS-friendly resume rewritten for the role.
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
@@ -18,9 +19,29 @@ Upload your resume, paste a job description, and get a personalized interview ga
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/home.png" alt="InterviewIQ home: job description, resume upload, self description and recent interview plans" width="900" />
+  <br/><em>Home: paste a job description, upload your resume, and see your past interview plans at a glance</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/report.png" alt="InterviewIQ report: match score, technical questions with intention and answer, skill gaps" width="900" />
+  <br/><em>Interview report: match score, expandable questions with intention &amp; model answers, and colour-coded skill gaps</em>
+</p>
+
 ## 📌 Overview
 
-Preparing for an interview usually means guessing what will be asked and manually rewriting your resume for every job. **InterviewIQ** automates both. It reads your resume (PDF), your self-description, and the target job description, then uses **Google Gemini** with a strict, schema-validated JSON output to produce a structured interview report you can revisit anytime.
+Every job application raises the same two problems: *"What will they ask me?"* and *"Is my resume right for this role?"* Candidates spend hours searching generic question lists and rewriting resumes by hand, and still walk in unsure where they fall short.
+
+**InterviewIQ solves both in one step.** It reads your resume (PDF), your self-description and the target job description, then uses **Google Gemini** with a strict, **Zod-validated JSON schema** to produce a structured, role-specific interview report, saved to your account so you can revisit it anytime. With one more click, it generates a tailored, ATS-friendly resume PDF for that exact job.
+
+**Why it stands out:**
+- 🎯 **Role-specific, not generic.** Every question, gap and prep task comes from *your* resume measured against *that* job description.
+- 🧠 **Explains the "why".** Each question includes the interviewer's intention, so you learn what is being tested, not just a script.
+- 🛡️ **Reliable AI output.** Schema-constrained generation means the UI always gets well-formed data, not free text that breaks.
+- 🔁 **End-to-end.** It goes from analysis to preparation to an application-ready resume in one place.
 
 ## ✨ Features
 
@@ -66,6 +87,7 @@ Preparing for an interview usually means guessing what will be asked and manuall
 
 ```
 InterviewIQ/
+├── docs/screenshots/             # README images
 ├── Backend/
 │   ├── server.js                 # Entry point
 │   └── src/

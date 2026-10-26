@@ -98,8 +98,9 @@ const Home = () => {
                         <p>Tailor your resume, uncover gaps &amp; prepare high-impact interview questions.</p>
                     </section>
 
-                    {/* Job description */}
-                    <section className="field">
+                    <div className="home-grid">
+                    {/* Left column: job description */}
+                    <section className="field field-grow col-left">
                         <div className="field-header">
                             <label htmlFor="jobDescription" className="field-title">
                                 <BriefcaseIcon /> Job Description
@@ -136,6 +137,8 @@ const Home = () => {
                         </div>
                     </section>
 
+                    {/* Right column */}
+                    <div className="col-right">
                     {/* Resume */}
                     <section className="field">
                         <div className="field-header">
@@ -194,22 +197,25 @@ const Home = () => {
                             />
                         </div>
                     </section>
+
+                    {/* Recent reports list*/}
+                    {reports.length > 0 && (
+                        <section className='recent-reports'>
+                            <h2>My recent Interview Plans</h2>
+                            <ul className='reports-list'>
+                                {reports.map(report=>(
+                                    <li key={report._id} className='report-item' onClick={()=> navigate(`/interview/${report._id}`)}>
+                                    <h3>{report.title || 'Untitled Position'}</h3>
+                                    <p className='report-meta'>Generated on {new Date(report.createdAt).toLocaleDateString()}</p>
+                                    <p className='match-score'>Match Score: {report.matchScore ?? 0}%</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
+                    </div>
+                    </div>
                 </div>
-                {/* Recent reports list*/}
-                {reports.length > 0 && (
-                    <section className='recent-reports'>
-                        <h2>My recent Interview Plans</h2>
-                        <ul className='reports-list'> 
-                            {reports.map(report=>(
-                                <li key={report._id} className='report-item' onClick={()=> navigate(`/interview/${report._id}`)}>
-                                <h3>{report.title || 'Untitled Position'}</h3>
-                                <p className='report-meta'>Generated on {new Date(report.createdAt).toLocaleDateString()}</p>
-                                <p className='match-score'>Match Score: {report.matchScore ?? 0}%</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                )}
 
                 {/* Footer CTA */}
                 <footer className="home-footer">

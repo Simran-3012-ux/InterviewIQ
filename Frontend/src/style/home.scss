@@ -15,7 +15,7 @@ $success: #22c55e;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1.5rem;
     background: $bg;
 
     // undo the global `* { margin }` inside this page
@@ -25,7 +25,7 @@ $success: #22c55e;
 
     .home-card {
         width: 100%;
-        max-width: 460px;
+        max-width: 1200px;
         display: flex;
         flex-direction: column;
         background: linear-gradient(180deg, #1c1022 0%, $card 30%, $card 100%);
@@ -89,8 +89,30 @@ $success: #22c55e;
     .home-content {
         display: flex;
         flex-direction: column;
-        gap: 1.6rem;
-        padding: 1.25rem 1rem 1rem;
+        gap: 1.25rem;
+        padding: 1.25rem 1.5rem 1rem;
+    }
+
+    // ---------- Two-column layout ----------
+    .home-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    .col-right {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        min-width: 0;
+    }
+
+    // job description fills the full height of the left column
+    .field-grow {
+        min-width: 0;
+        .textarea-box.dark { flex: 1; }
+        .textarea-box.dark textarea { flex: 1; }
     }
 
     .hero {
@@ -292,7 +314,6 @@ $success: #22c55e;
         display: flex;
         flex-direction: column;
         gap: 0.65rem;
-        padding: 0 1rem 1rem;
 
         h2 {
             font-size: 0.9rem;
@@ -302,9 +323,11 @@ $success: #22c55e;
         .reports-list {
             list-style: none;
             padding: 0;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             gap: 0.5rem;
+            max-height: 150px;
+            overflow-y: auto;
         }
 
         .report-item {
@@ -357,11 +380,12 @@ $success: #22c55e;
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.75rem 1rem 0.9rem;
+        padding: 0.5rem 1.5rem 1rem;
     }
 
     .generate-button {
         width: 100%;
+        max-width: 480px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -387,5 +411,12 @@ $success: #22c55e;
         gap: 0.35rem;
         font-size: 0.65rem;
         color: #6f6878;
+    }
+
+    // ---------- Small screens: back to a single column ----------
+    @media (max-width: 900px) {
+        .home-card { max-width: 520px; }
+        .home-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+        .field-grow .textarea-box.dark textarea { min-height: 140px; }
     }
 }
