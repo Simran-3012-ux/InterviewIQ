@@ -82,7 +82,7 @@ const Home = () => {
                 <header className="topbar">
                     <div className="brand">
                         <span className="brand-logo"><SparkleIcon size={20} /></span>
-                        <span className="brand-name">ResumeAI</span>
+                        <span className="brand-name">InterviewIQ</span>
                         <span className="brand-badge">PRO</span>
                     </div>
                     <div className="topbar-actions">
