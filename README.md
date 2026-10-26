@@ -1,130 +1,120 @@
-<div align="center">
+# InterviewIQ
 
-# 🎯 InterviewIQ
+**AI-Powered Interview Preparation and Resume Tailoring Platform**
 
-### AI-Powered Interview Preparation & Resume Tailoring Platform
+InterviewIQ is a full-stack web application that helps candidates prepare for job interviews. Given a resume, a self-description and a target job description, it generates a personalized interview report containing a profile match score, likely technical and behavioral questions with guidance on how to answer them, an analysis of skill gaps, and a day-wise preparation plan. It can also produce an ATS-friendly resume tailored to the specific role.
 
-**Stop guessing what the interviewer will ask.**
-Drop in your resume and a job description — InterviewIQ turns them into a personalized interview game plan in seconds: a match score, the exact questions you're likely to face (with what the interviewer is really testing and how to answer), your skill gaps ranked by severity, a day-by-day prep roadmap, and a one-click ATS-friendly resume rewritten for the role.
-
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?logo=googlegemini&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT-Auth-000000?logo=jsonwebtokens&logoColor=white)
-
-</div>
+**Technologies:** React 19, Vite, Node.js, Express 5, MongoDB, Google Gemini, JWT
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 <p align="center">
-  <img src="docs/screenshots/home.png" alt="InterviewIQ home: job description, resume upload, self description and recent interview plans" width="900" />
-  <br/><em>Home: paste a job description, upload your resume, and see your past interview plans at a glance</em>
+  <img src="docs/screenshots/home.png" alt="InterviewIQ home page showing job description, resume upload, self description and recent interview plans" width="900" />
+  <br/><em>Home page: job description input, resume upload, self description and previously generated interview plans</em>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/report.png" alt="InterviewIQ report: match score, technical questions with intention and answer, skill gaps" width="900" />
-  <br/><em>Interview report: match score, expandable questions with intention &amp; model answers, and colour-coded skill gaps</em>
+  <img src="docs/screenshots/report.png" alt="InterviewIQ report page showing match score, technical questions and skill gaps" width="900" />
+  <br/><em>Interview report: match score, expandable questions with interviewer intention and suggested answers, and skill gaps by severity</em>
 </p>
 
-## 📌 Overview
+## Overview
 
-Every job application raises the same two problems: *"What will they ask me?"* and *"Is my resume right for this role?"* Candidates spend hours searching generic question lists and rewriting resumes by hand, and still walk in unsure where they fall short.
+Candidates preparing for an interview typically face two questions: what they are likely to be asked, and whether their resume suits the role. Answering these usually involves searching through generic question lists and manually rewriting the resume for each application.
 
-**InterviewIQ solves both in one step.** It reads your resume (PDF), your self-description and the target job description, then uses **Google Gemini** with a strict, **Zod-validated JSON schema** to produce a structured, role-specific interview report, saved to your account so you can revisit it anytime. With one more click, it generates a tailored, ATS-friendly resume PDF for that exact job.
+InterviewIQ addresses both in a single workflow. The application extracts text from the uploaded resume (PDF), combines it with the self-description and the job description, and sends it to Google Gemini with a strict JSON schema defined using Zod. The structured response is stored in MongoDB against the user's account and presented in a dashboard. On request, the application generates a tailored resume and returns it as a PDF.
 
-**Why it stands out:**
-- 🎯 **Role-specific, not generic.** Every question, gap and prep task comes from *your* resume measured against *that* job description.
-- 🧠 **Explains the "why".** Each question includes the interviewer's intention, so you learn what is being tested, not just a script.
-- 🛡️ **Reliable AI output.** Schema-constrained generation means the UI always gets well-formed data, not free text that breaks.
-- 🔁 **End-to-end.** It goes from analysis to preparation to an application-ready resume in one place.
+Key characteristics:
 
-## ✨ Features
+- **Role-specific output.** Questions, skill gaps and preparation tasks are derived from the candidate's own resume and the given job description rather than generic lists.
+- **Explanatory guidance.** Each question includes the interviewer's intention, helping the candidate understand what is being assessed.
+- **Reliable AI responses.** Schema-constrained generation ensures the frontend always receives well-formed, predictable data.
+- **End-to-end workflow.** Analysis, preparation and resume tailoring are available in one place.
 
-- 🔐 **Secure authentication** — register / login with hashed passwords (bcrypt), JWT stored in HTTP-only cookies, and token blacklisting on logout.
-- 📄 **Resume PDF parsing** — upload a resume (up to 3 MB); text is extracted server-side with `pdf-parse`.
-- 📊 **Match score (0–100)** — how well your profile fits the job description.
-- 💻 **Technical questions** — role-specific questions, the interviewer's intention behind each, and how to answer.
-- 🤝 **Behavioral questions** — with intention and STAR-style answer guidance.
-- 🧩 **Skill-gap analysis** — missing skills ranked by severity (low / medium / high).
-- 🗓️ **Day-wise preparation plan** — a focused task list for each day before the interview.
-- 📝 **Tailored resume generator** — AI rewrites your resume for the role and exports it as a clean, ATS-friendly **A4 PDF** (rendered with Puppeteer).
-- 🕘 **Report history** — every report is saved to your account so you can come back to it.
+## Features
 
-## 🛠️ Tech Stack
+- **Authentication:** user registration and login with bcrypt password hashing, JWT stored in HTTP-only cookies, and token blacklisting on logout.
+- **Resume parsing:** PDF upload (up to 3 MB) with server-side text extraction using `pdf-parse`.
+- **Match score:** a score from 0 to 100 indicating how closely the candidate's profile fits the job description.
+- **Technical questions:** role-specific questions, each with the interviewer's intention and a suggested approach to answering.
+- **Behavioral questions:** questions with intention and structured (STAR-based) answer guidance.
+- **Skill gap analysis:** missing or weak skills classified by severity (low, medium, high).
+- **Preparation plan:** a day-wise schedule with focus areas and tasks.
+- **Tailored resume generation:** the resume is rewritten for the target role and exported as an A4 PDF using Puppeteer.
+- **Report history:** all generated reports are saved to the user's account for later reference.
+
+## Tech Stack
 
 | Layer | Technologies |
 |---|---|
-| **Frontend** | React 19, Vite, React Router, Context API + custom hooks, Axios, SCSS |
-| **Backend** | Node.js, Express 5, Multer, pdf-parse, Puppeteer |
-| **AI** | Google Gemini (`@google/genai`) with structured JSON output via Zod schemas |
-| **Database** | MongoDB with Mongoose |
-| **Auth & Security** | JWT, bcryptjs, HTTP-only cookies, token blacklist, CORS |
+| Frontend | React 19, Vite, React Router, Context API with custom hooks, Axios, SCSS |
+| Backend | Node.js, Express 5, Multer, pdf-parse, Puppeteer |
+| AI | Google Gemini (`@google/genai`) with structured JSON output via Zod schemas |
+| Database | MongoDB with Mongoose |
+| Authentication and Security | JWT, bcryptjs, HTTP-only cookies, token blacklist, CORS |
 
-## 🏗️ Architecture
+## Architecture
 
 ```
-┌──────────────────┐   Axios (cookies)   ┌───────────────────────┐
-│  React + Vite    │ ──────────────────► │  Express REST API     │
-│  (Frontend)      │ ◄────────────────── │  (Backend)            │
-└──────────────────┘        JSON / PDF   └──────────┬────────────┘
-                                                    │
-                      ┌─────────────────────────────┼─────────────────────────┐
-                      ▼                             ▼                         ▼
-              ┌───────────────┐          ┌────────────────────┐     ┌──────────────────┐
-              │   MongoDB     │          │   Google Gemini    │     │    Puppeteer     │
-              │ users,reports │          │ (Zod JSON schema)  │     │  HTML ➜ PDF      │
-              └───────────────┘          └────────────────────┘     └──────────────────┘
++------------------+   Axios (cookies)   +-----------------------+
+|  React + Vite    | ------------------> |  Express REST API     |
+|  (Frontend)      | <------------------ |  (Backend)            |
++------------------+     JSON / PDF      +-----------+-----------+
+                                                     |
+                     +-------------------------------+---------------------------+
+                     |                               |                           |
+             +----------------+           +--------------------+      +------------------+
+             |    MongoDB     |           |   Google Gemini    |      |    Puppeteer     |
+             | users, reports |           | (Zod JSON schema)  |      |   HTML to PDF    |
+             +----------------+           +--------------------+      +------------------+
 ```
 
-**Report flow:** Resume PDF → text extraction → prompt + Zod JSON schema → Gemini → validated JSON → saved in MongoDB → rendered in the dashboard.
+**Report generation flow:** resume PDF, text extraction, prompt with Zod JSON schema, Gemini, validated JSON, storage in MongoDB, display in the dashboard.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 InterviewIQ/
-├── docs/screenshots/             # README images
+├── docs/screenshots/              # Images used in this README
 ├── Backend/
-│   ├── server.js                 # Entry point
+│   ├── server.js                  # Entry point
 │   └── src/
-│       ├── app.js                # Express app, middleware, routes
-│       ├── config/database.js    # MongoDB connection
-│       ├── controllers/          # Auth & interview logic
-│       ├── middlewares/          # JWT auth, file upload (Multer)
-│       ├── models/               # User, InterviewReport, Blacklist
-│       ├── routes/               # /api/auth, /api/interview
-│       └── services/ai.service.js# Gemini prompts + PDF generation
+│       ├── app.js                 # Express app, middleware and routes
+│       ├── config/database.js     # MongoDB connection
+│       ├── controllers/           # Authentication and interview logic
+│       ├── middlewares/           # JWT authentication, file upload (Multer)
+│       ├── models/                # User, InterviewReport, Blacklist
+│       ├── routes/                # /api/auth, /api/interview
+│       └── services/ai.service.js # Gemini prompts and PDF generation
 └── Frontend/
     └── src/
-        ├── app.routes.jsx        # Route definitions
+        ├── app.routes.jsx         # Route definitions
         ├── features/
-        │   ├── auth/             # Login, Register, Protected route, context
-        │   └── interview/        # Home (input form), Report page, context
-        └── style/                # SCSS styles
+        │   ├── auth/              # Login, Register, protected routes, context
+        │   └── interview/         # Home (input form), report page, context
+        └── style/                 # SCSS styles
 ```
 
-## 🔌 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
 | POST | `/api/auth/register` | Public | Register a new user |
-| POST | `/api/auth/login` | Public | Login and receive JWT cookie |
-| GET | `/api/auth/logout` | Public | Clear cookie and blacklist token |
-| GET | `/api/auth/get-me` | Private | Get the logged-in user |
+| POST | `/api/auth/login` | Public | Log in and receive a JWT cookie |
+| GET | `/api/auth/logout` | Public | Clear the cookie and blacklist the token |
+| GET | `/api/auth/get-me` | Private | Retrieve the logged-in user |
 | POST | `/api/interview/` | Private | Generate a report (`multipart/form-data`: `resume`, `jobDescription`, `selfDescription`) |
 | GET | `/api/interview/` | Private | List all reports of the user |
-| GET | `/api/interview/report/:interviewId` | Private | Get a single report |
-| GET / POST | `/api/interview/resume/pdf/:interviewReportId` | Private | Download the tailored resume as PDF |
+| GET | `/api/interview/report/:interviewId` | Private | Retrieve a single report |
+| GET / POST | `/api/interview/resume/pdf/:interviewReportId` | Private | Download the tailored resume as a PDF |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 18 or later
 - A MongoDB database (local or [MongoDB Atlas](https://www.mongodb.com/atlas))
 - A Google Gemini API key ([Google AI Studio](https://aistudio.google.com/))
 
@@ -140,11 +130,11 @@ cd InterviewIQ
 ```bash
 cd Backend
 npm install
-cp .env.example .env    # then fill in your values
+cp .env.example .env    # then fill in the values
 npm run dev             # runs on http://localhost:3000
 ```
 
-**Environment variables (`Backend/.env`):**
+Environment variables (`Backend/.env`):
 
 | Variable | Description |
 |---|---|
@@ -160,25 +150,23 @@ npm install
 npm run dev             # runs on http://localhost:5173
 ```
 
-Open **http://localhost:5173**, create an account, and generate your first interview report.
+Open http://localhost:5173, create an account and generate an interview report.
 
-## 🔒 Security Highlights
+## Security
 
-- Passwords hashed with **bcrypt**; never stored in plain text.
-- JWT in **HTTP-only cookies** (with `Authorization: Bearer` fallback for API clients).
-- Logged-out tokens are **blacklisted** in MongoDB so they can't be reused.
-- Reports are always queried by **owner**, so users can only access their own data.
-- Upload size limited to **3 MB**; secrets kept in `.env` (git-ignored).
+- Passwords are hashed with bcrypt and never stored in plain text.
+- JWTs are stored in HTTP-only cookies, with an `Authorization: Bearer` header supported for API clients.
+- Tokens are blacklisted in MongoDB on logout to prevent reuse.
+- Reports are always queried by owner, so users can access only their own data.
+- File uploads are limited to 3 MB, and secrets are kept in a git-ignored `.env` file.
 
-## 🔮 Future Improvements
+## Future Enhancements
 
 - Mock interview mode with voice input and AI feedback
-- Shareable report links and PDF export of the full report
-- Cloud deployment (Vercel + Render) with environment-based API URLs
+- Shareable report links and PDF export of the complete report
+- Cloud deployment (Vercel and Render) with environment-based API URLs
 - Unit and integration tests
 
-## 👩‍💻 Author
+## Author
 
 **Simran Maurya**
-
-If you found this project useful, consider giving it a ⭐!
