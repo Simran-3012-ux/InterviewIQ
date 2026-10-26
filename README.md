@@ -109,7 +109,7 @@ InterviewIQ/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/InterviewIQ.git
+git clone https://github.com/Simran-3012-ux/InterviewIQ.git
 cd InterviewIQ
 ```
 
