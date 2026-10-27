@@ -35,7 +35,7 @@ Key characteristics:
 
 ## Features
 
-- **Authentication:** user registration and login with bcrypt password hashing, JWT stored in HTTP-only cookies, and token blacklisting on logout.
+- **Authentication:** user registration and login with bcrypt password hashing, JWT stored in a cookie, and token blacklisting on logout.
 - **Resume parsing:** PDF upload (up to 3 MB) with server-side text extraction using `pdf-parse`.
 - **Match score:** a score from 0 to 100 indicating how closely the candidate's profile fits the job description.
 - **Technical questions:** role-specific questions, each with the interviewer's intention and a suggested approach to answering.
@@ -53,7 +53,7 @@ Key characteristics:
 | Backend | Node.js, Express 5, Multer, pdf-parse, Puppeteer |
 | AI | Google Gemini (`@google/genai`) with structured JSON output via Zod schemas |
 | Database | MongoDB with Mongoose |
-| Authentication and Security | JWT, bcryptjs, HTTP-only cookies, token blacklist, CORS |
+| Authentication and Security | JWT, bcryptjs, cookie-based sessions, token blacklist, CORS |
 
 ## Architecture
 
@@ -155,7 +155,7 @@ Open http://localhost:5173, create an account and generate an interview report.
 ## Security
 
 - Passwords are hashed with bcrypt and never stored in plain text.
-- JWTs are stored in HTTP-only cookies, with an `Authorization: Bearer` header supported for API clients.
+- JWTs are stored in a cookie, with an `Authorization: Bearer` header supported for API clients.
 - Tokens are blacklisted in MongoDB on logout to prevent reuse.
 - Reports are always queried by owner, so users can access only their own data.
 - File uploads are limited to 3 MB, and secrets are kept in a git-ignored `.env` file.
@@ -166,6 +166,7 @@ Open http://localhost:5173, create an account and generate an interview report.
 - Shareable report links and PDF export of the complete report
 - Cloud deployment (Vercel and Render) with environment-based API URLs
 - Unit and integration tests
+- HTTP-only, secure and SameSite flags on the auth cookie, plus rate limiting on login
 
 ## Author
 
