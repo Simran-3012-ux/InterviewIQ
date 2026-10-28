@@ -40,4 +40,11 @@ if (fs.existsSync(frontendDist)) {
     })
 }
 
+// Unexpected errors (for example the database being unreachable) return JSON
+// so the frontend can show a useful message instead of a generic failure
+app.use((err, req, res, next) => {
+    console.error("Unhandled error:", err)
+    res.status(500).json({ message: "Server error: " + (err.message || "unknown error") })
+})
+
 module.exports = app
