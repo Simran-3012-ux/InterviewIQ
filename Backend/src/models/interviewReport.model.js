@@ -42,6 +42,11 @@ const technicalQuestionSchema = new mongoose.Schema({
     answer:{
         type:String,
         required:[true,"Answer is required"]
+    },
+    source:{
+        type:String,
+        enum:["question_bank","generated"],
+        default:"generated"
     }
     },{
         _id:false
@@ -61,6 +66,11 @@ const behavorialQuestionSchema = new mongoose.Schema({
     answer:{
         type:String,
         required:[true,"Answer is required"]
+    },
+    source:{
+        type:String,
+        enum:["question_bank","generated"],
+        default:"generated"
     }
     }, { _id:false})
     
@@ -127,7 +137,17 @@ const interviewReportSchema = new mongoose.Schema({
     title:{
         type:String,
         required:[ true,"Job title is required"]
-    }
+    },
+    // real questions retrieved from the question bank (RAG) and given to Gemini as context
+    referenceQuestions:[{
+        _id:false,
+        questionId:{ type: mongoose.Schema.Types.ObjectId, ref: "QuestionBank" },
+        question:String,
+        type:{ type: String },
+        topic:String,
+        company:String,
+        score:Number
+    }]
 
     },{
         timestamps:true

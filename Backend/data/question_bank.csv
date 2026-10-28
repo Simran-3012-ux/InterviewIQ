@@ -1,0 +1,154 @@
+question,type,role,topic,difficulty,company,source
+"Explain the JavaScript event loop and how microtasks differ from macrotasks.",technical,frontend,javascript,3,unspecified,curated-common
+"What is a closure in JavaScript? Give a practical use case.",technical,frontend,javascript,2,unspecified,curated-common
+"Explain the difference between var, let and const.",technical,frontend,javascript,1,unspecified,curated-common
+"How does prototypal inheritance work in JavaScript?",technical,frontend,javascript,3,unspecified,curated-common
+"What is the difference between == and === in JavaScript?",technical,frontend,javascript,1,unspecified,curated-common
+"Explain how the this keyword is bound in regular functions and arrow functions.",technical,frontend,javascript,2,unspecified,curated-common
+"What are Promises and how does async/await work under the hood?",technical,frontend,javascript,2,unspecified,curated-common
+"Implement a debounce function and explain when you would use it instead of throttle.",technical,frontend,javascript,3,unspecified,curated-common
+"What is event delegation and why is it useful?",technical,frontend,javascript,2,unspecified,curated-common
+"Explain hoisting in JavaScript with an example.",technical,frontend,javascript,1,unspecified,curated-common
+"What is the virtual DOM and how does React reconciliation work?",technical,frontend,react,3,unspecified,curated-common
+"Explain the rules of hooks and why they exist.",technical,frontend,react,2,unspecified,curated-common
+"When would you use useMemo and useCallback, and when are they unnecessary?",technical,frontend,react,3,unspecified,curated-common
+"How does useEffect cleanup work and what problems does it prevent?",technical,frontend,react,2,unspecified,curated-common
+"Compare Context API, Redux and Zustand for state management.",technical,frontend,react,3,unspecified,curated-common
+"Why are keys important when rendering lists in React?",technical,frontend,react,1,unspecified,curated-common
+"What are controlled and uncontrolled components?",technical,frontend,react,2,unspecified,curated-common
+"How would you diagnose and fix unnecessary re-renders in a large React app?",technical,frontend,react,4,unspecified,curated-common
+"Explain server-side rendering, static generation and client-side rendering and their trade-offs.",technical,frontend,react,4,unspecified,curated-common
+"What are React Server Components and how do they change data fetching?",technical,frontend,react,5,unspecified,curated-common
+"How would you implement code splitting and lazy loading in React?",technical,frontend,react,3,unspecified,curated-common
+"What are error boundaries and what can they not catch?",technical,frontend,react,3,unspecified,curated-common
+"Explain the CSS box model and box-sizing.",technical,frontend,css,1,unspecified,curated-common
+"How does CSS specificity work?",technical,frontend,css,2,unspecified,curated-common
+"Compare Flexbox and CSS Grid. When would you use each?",technical,frontend,css,2,unspecified,curated-common
+"How would you structure CSS for a large application maintained by many teams?",technical,frontend,css,4,unspecified,curated-common
+"What causes layout reflow and repaint, and how do you minimise them?",technical,frontend,performance,4,unspecified,curated-common
+"Explain Core Web Vitals (LCP, INP, CLS) and how you would improve each.",technical,frontend,performance,4,unspecified,curated-common
+"What happens when you type a URL into the browser and press Enter?",technical,general,web fundamentals,3,unspecified,curated-common
+"Explain CORS and how a preflight request works.",technical,general,web fundamentals,3,unspecified,curated-common
+"Compare cookies, localStorage and sessionStorage.",technical,frontend,web fundamentals,2,unspecified,curated-common
+"What is XSS and how do you prevent it in a frontend application?",technical,frontend,security,3,unspecified,curated-common
+"What is CSRF and how do SameSite cookies help?",technical,general,security,3,unspecified,curated-common
+"Explain generics in TypeScript with an example.",technical,frontend,typescript,3,unspecified,curated-common
+"What is the difference between an interface and a type alias in TypeScript?",technical,frontend,typescript,2,unspecified,curated-common
+"Explain conditional types and mapped types in TypeScript.",technical,frontend,typescript,5,unspecified,curated-common
+"How do you approach testing a React component? What do you mock and what do you not?",technical,frontend,testing,3,unspecified,curated-common
+"How would you design a reusable component library or design system?",technical,frontend,architecture,5,unspecified,curated-common
+"How does Node.js handle concurrency with a single thread?",technical,backend,nodejs,3,unspecified,curated-common
+"What are streams in Node.js and when would you use them?",technical,backend,nodejs,3,unspecified,curated-common
+"How do you handle errors in an Express application, including async errors?",technical,backend,nodejs,2,unspecified,curated-common
+"Explain middleware in Express and the order in which it runs.",technical,backend,nodejs,2,unspecified,curated-common
+"When would you use worker threads or the cluster module in Node.js?",technical,backend,nodejs,4,unspecified,curated-common
+"How would you find and fix a memory leak in a Node.js service?",technical,backend,nodejs,5,unspecified,curated-common
+"What makes an API RESTful? Explain resources, verbs and status codes.",technical,backend,api design,2,unspecified,curated-common
+"Compare REST and GraphQL. When would you choose each?",technical,backend,api design,3,unspecified,curated-common
+"How would you version an API without breaking existing clients?",technical,backend,api design,3,unspecified,curated-common
+"What is idempotency and how do you make a payment API idempotent?",technical,backend,api design,4,unspecified,curated-common
+"How would you implement pagination for a large dataset? Compare offset and cursor pagination.",technical,backend,api design,3,unspecified,curated-common
+"How would you implement rate limiting for a public API?",technical,backend,api design,4,unspecified,curated-common
+"How does JWT authentication work and what are its drawbacks?",technical,backend,security,2,unspecified,curated-common
+"Compare session-based authentication with token-based authentication.",technical,backend,security,3,unspecified,curated-common
+"How would you implement role-based access control?",technical,backend,security,3,unspecified,curated-common
+"How should passwords be stored? Explain hashing and salting.",technical,backend,security,2,unspecified,curated-common
+"Explain OAuth 2.0 authorization code flow with PKCE.",technical,backend,security,4,unspecified,curated-common
+"What is SQL injection and how do you prevent it?",technical,backend,security,2,unspecified,curated-common
+"Explain ACID properties of a database transaction.",technical,backend,databases,2,unspecified,curated-common
+"What are database indexes, and when can an index make performance worse?",technical,backend,databases,3,unspecified,curated-common
+"How would you investigate a slow SQL query?",technical,backend,databases,3,unspecified,curated-common
+"Explain transaction isolation levels and the anomalies each prevents.",technical,backend,databases,5,unspecified,curated-common
+"Compare SQL and NoSQL databases. How do you choose between them?",technical,backend,databases,2,unspecified,curated-common
+"When would you embed versus reference documents in MongoDB?",technical,backend,databases,3,unspecified,curated-common
+"What is database normalization and when would you denormalize?",technical,backend,databases,3,unspecified,curated-common
+"Explain sharding and replication and the problems each solves.",technical,backend,databases,4,unspecified,curated-common
+"What is the N+1 query problem and how do you fix it?",technical,backend,databases,3,unspecified,curated-common
+"Explain caching strategies such as cache-aside, write-through and write-back.",technical,backend,caching,3,unspecified,curated-common
+"How do you handle cache invalidation and cache stampedes?",technical,backend,caching,4,unspecified,curated-common
+"What would you use Redis for besides caching?",technical,backend,caching,3,unspecified,curated-common
+"Design a URL shortener.",technical,general,system design,3,unspecified,curated-common
+"Design a rate limiter.",technical,general,system design,4,unspecified,curated-common
+"Design a real-time chat application.",technical,general,system design,4,unspecified,curated-common
+"Design a news feed system.",technical,general,system design,5,unspecified,curated-common
+"Design a notification service that sends email, SMS and push notifications.",technical,general,system design,4,unspecified,curated-common
+"Design a file storage service like Google Drive.",technical,general,system design,5,unspecified,curated-common
+"Explain the CAP theorem with a practical example.",technical,general,system design,4,unspecified,curated-common
+"What is horizontal versus vertical scaling?",technical,general,system design,2,unspecified,curated-common
+"How does a load balancer work, and what algorithms can it use?",technical,general,system design,3,unspecified,curated-common
+"When would you use a message queue such as Kafka or RabbitMQ?",technical,general,system design,4,unspecified,curated-common
+"Compare microservices and a monolith. When is a monolith the better choice?",technical,general,architecture,3,unspecified,curated-common
+"How do you keep data consistent across microservices? Explain the saga pattern.",technical,general,architecture,5,unspecified,curated-common
+"How would you implement real-time updates? Compare WebSockets, SSE and polling.",technical,general,system design,3,unspecified,curated-common
+"Explain what happens during a Docker build and how layer caching works.",technical,devops,docker,3,unspecified,curated-common
+"What is the difference between a container and a virtual machine?",technical,devops,docker,2,unspecified,curated-common
+"Explain Kubernetes pods, deployments and services.",technical,devops,kubernetes,4,unspecified,curated-common
+"Describe a CI/CD pipeline you would set up for a web application.",technical,devops,ci/cd,3,unspecified,curated-common
+"How would you deploy a change with zero downtime?",technical,devops,ci/cd,4,unspecified,curated-common
+"What metrics, logs and traces would you collect to monitor a production service?",technical,devops,observability,4,unspecified,curated-common
+"Explain the core AWS services you would use to host a web application.",technical,devops,cloud,3,unspecified,curated-common
+"Explain the time complexity of common operations on arrays, hash maps and balanced trees.",technical,general,data structures,2,unspecified,curated-common
+"How does a hash map handle collisions?",technical,general,data structures,3,unspecified,curated-common
+"Find the longest substring without repeating characters.",technical,general,algorithms,3,unspecified,curated-common
+"Detect a cycle in a linked list.",technical,general,algorithms,2,unspecified,curated-common
+"Merge overlapping intervals.",technical,general,algorithms,3,unspecified,curated-common
+"Find the k most frequent elements in an array.",technical,general,algorithms,3,unspecified,curated-common
+"Implement an LRU cache.",technical,general,algorithms,4,unspecified,curated-common
+"Find the number of islands in a 2D grid.",technical,general,algorithms,3,unspecified,curated-common
+"Explain BFS versus DFS and when to use each.",technical,general,algorithms,2,unspecified,curated-common
+"Explain dynamic programming using the coin change problem.",technical,general,algorithms,4,unspecified,curated-common
+"Validate whether a binary tree is a binary search tree.",technical,general,algorithms,3,unspecified,curated-common
+"Explain the four principles of object-oriented programming.",technical,general,oop,1,unspecified,curated-common
+"Explain the SOLID principles with examples.",technical,general,oop,3,unspecified,curated-common
+"What is the difference between a process and a thread?",technical,general,operating systems,2,unspecified,curated-common
+"What is a deadlock and how can it be prevented?",technical,general,operating systems,3,unspecified,curated-common
+"Explain the difference between TCP and UDP.",technical,general,networking,2,unspecified,curated-common
+"How does HTTPS secure communication? Explain the TLS handshake.",technical,general,networking,4,unspecified,curated-common
+"Explain the bias-variance trade-off.",technical,data,machine learning,3,unspecified,curated-common
+"How do you handle an imbalanced dataset?",technical,data,machine learning,3,unspecified,curated-common
+"Explain precision, recall and F1 score. When would you prioritise recall?",technical,data,machine learning,2,unspecified,curated-common
+"What is overfitting and how do you prevent it?",technical,data,machine learning,2,unspecified,curated-common
+"Explain how gradient descent works.",technical,data,machine learning,3,unspecified,curated-common
+"Compare random forests and gradient boosted trees.",technical,data,machine learning,4,unspecified,curated-common
+"How would you design an A/B test and decide whether the result is significant?",technical,data,statistics,4,unspecified,curated-common
+"Explain p-values and common ways they are misinterpreted.",technical,data,statistics,3,unspecified,curated-common
+"Write a SQL query to find the second highest salary in each department.",technical,data,sql,3,unspecified,curated-common
+"Explain window functions in SQL with an example.",technical,data,sql,3,unspecified,curated-common
+"What is retrieval-augmented generation and when is it better than fine-tuning?",technical,data,generative ai,4,unspecified,curated-common
+"How do transformers use self-attention?",technical,data,generative ai,4,unspecified,curated-common
+"How would you evaluate the output quality of an LLM-based application?",technical,data,generative ai,5,unspecified,curated-common
+"How would you prioritise features for the next quarter with limited engineering capacity?",technical,product,product sense,3,unspecified,curated-common
+"Which metrics would you track to measure the success of a new feature?",technical,product,metrics,3,unspecified,curated-common
+"Tell me about yourself.",behavioral,general,introduction,1,unspecified,curated-common
+"Why do you want to work at this company?",behavioral,general,motivation,1,unspecified,curated-common
+"Why are you looking to leave your current role?",behavioral,general,motivation,2,unspecified,curated-common
+"Where do you see yourself in five years?",behavioral,general,motivation,1,unspecified,curated-common
+"Tell me about a time you had a conflict with a teammate and how you resolved it.",behavioral,general,conflict,3,unspecified,curated-common
+"Tell me about a time you disagreed with your manager.",behavioral,general,conflict,3,unspecified,curated-common
+"Describe a time you failed. What did you learn?",behavioral,general,failure,3,unspecified,curated-common
+"Tell me about the most technically challenging project you have worked on.",behavioral,general,technical challenge,3,unspecified,curated-common
+"Describe a time you had to meet a tight deadline.",behavioral,general,time management,2,unspecified,curated-common
+"Tell me about a time you took ownership of a problem that was not assigned to you.",behavioral,general,ownership,3,unspecified,curated-common
+"Describe a situation where you had to learn a new technology quickly.",behavioral,general,learning,2,unspecified,curated-common
+"Tell me about a time you received critical feedback. How did you respond?",behavioral,general,feedback,3,unspecified,curated-common
+"Tell me about a time you influenced a decision without having authority.",behavioral,general,influence,4,unspecified,curated-common
+"Describe a time you had to make a decision with incomplete information.",behavioral,general,decision making,4,unspecified,curated-common
+"Tell me about a time you debugged a critical production issue under pressure.",behavioral,general,technical challenge,4,unspecified,curated-common
+"Describe a time you simplified a complex process or system.",behavioral,general,innovation,3,unspecified,curated-common
+"Tell me about a time you mentored or helped a teammate improve.",behavioral,general,leadership,3,unspecified,curated-common
+"Describe a time you led a project from start to finish.",behavioral,general,leadership,4,unspecified,curated-common
+"Tell me about a time you went above and beyond for a customer or user.",behavioral,general,customer focus,3,unspecified,curated-common
+"Describe a time you had to balance several competing priorities.",behavioral,general,time management,3,unspecified,curated-common
+"Tell me about a mistake you made that affected others. How did you handle it?",behavioral,general,failure,4,unspecified,curated-common
+"Describe a time you pushed back on a requirement because it was the wrong thing to build.",behavioral,general,influence,4,unspecified,curated-common
+"Tell me about a time you used data to make a decision.",behavioral,general,decision making,3,unspecified,curated-common
+"Describe a time you worked with a difficult stakeholder.",behavioral,general,conflict,3,unspecified,curated-common
+"Tell me about a time you improved the performance of a system.",behavioral,general,technical challenge,3,unspecified,curated-common
+"Describe a time you had to explain a technical concept to a non-technical audience.",behavioral,general,communication,2,unspecified,curated-common
+"Tell me about a time a project did not go as planned.",behavioral,general,failure,3,unspecified,curated-common
+"What is your greatest strength, and what is an area you are working to improve?",behavioral,general,self-awareness,2,unspecified,curated-common
+"Tell me about a time you worked in a team with very different working styles.",behavioral,general,teamwork,2,unspecified,curated-common
+"Describe the accomplishment you are most proud of.",behavioral,general,impact,2,unspecified,curated-common
+"Tell me about a time you raised the quality bar for your team, for example through code reviews or testing.",behavioral,general,ownership,4,unspecified,curated-common
+"Describe a time you had to say no to a request.",behavioral,general,communication,3,unspecified,curated-common
+"Tell me about a time you identified a risk early and prevented a problem.",behavioral,general,ownership,4,unspecified,curated-common

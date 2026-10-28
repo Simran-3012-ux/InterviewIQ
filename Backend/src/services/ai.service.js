@@ -3,6 +3,7 @@ require("dotenv").config();
 const {z} = require("zod")
 const {zodToJsonSchema} = require("zod-to-json-schema")
 const puppeteer = require("puppeteer")
+const { retrieveQuestions } = require("./rag.service")
 
 
 const ai = new GoogleGenAI({
@@ -31,13 +32,14 @@ const interviewReportSchema = z.object({
     technicalQuestions:z.array(z.object({
         question:z.string().describe("The technical question can be asked in the interview"),
         intention: z.string().describe("The intention of the interviewer behind asking this question"),
-        answer:z.string().describe("How to answer this question, what points to cover, what approach to take etc.")
+        answer:z.string().describe("How to answer this question, what points to cover, what approach to take etc."),
+        source:z.enum(["question_bank","generated"]).describe("question_bank if the question is taken or adapted from the REFERENCE QUESTIONS list, otherwise generated"),
     })).describe("Technical questions that can be asked in the interview along with their and intention and how to answer them"),
     behavorialQuestions:z.array(z.object({
         question:z.string().describe("The behavorial question can be asked in the interview"),
         intention: z.string().describe("The intention of the interviewer behind asking this question"),
-        answer:z.string().describe("How to answer this question, what points to cover, what approach to take etc.")
-
+        answer:z.string().describe("How to answer this question, what points to cover, what approach to take etc."),
+        source:z.enum(["question_bank","generated"]).describe("question_bank if the question is taken or adapted from the REFERENCE QUESTIONS list, otherwise generated"),
     })).describe("Behavorial questions that can be asked in the interview along with their and intention and how to answer them"),
     skillGaps:z.array(z.object({
         skill:z.string().describe("The skill which the candidate is lacking"),
@@ -54,6 +56,22 @@ const interviewReportSchema = z.object({
 
 async function generateInterviewReport({resume,selfDescription,jobDescription}){
 
+    // RAG: fetch real questions most similar to this job description to ground the report
+    let referenceQuestions = []
+    try {
+        const [technical, behavioral] = await Promise.all([
+            retrieveQuestions({ jobDescription, type: "technical", k: 8 }),
+            retrieveQuestions({ jobDescription, type: "behavioral", k: 5 }),
+        ])
+        referenceQuestions = [...technical, ...behavioral]
+    } catch (error) {
+        console.error("Question retrieval failed, continuing without references:", error.message)
+    }
+
+    const referenceBlock = referenceQuestions.length
+        ? referenceQuestions.map((q, i) => `${i + 1}. [${q.type} | ${q.topic} | company: ${q.company}] ${q.question}`).join("\n")
+        : "None available."
+
     const prompt = `
 You are an expert technical interviewer and career coach.
 
@@ -69,7 +87,13 @@ ${selfDescription}
 JOB DESCRIPTION:
 ${jobDescription}
 
+REFERENCE QUESTIONS (real interview questions retrieved from the question bank, most relevant first):
+${referenceBlock}
+
 Requirements:
+0. Ground the questions in the REFERENCE QUESTIONS: use or adapt the relevant ones first and mark
+   them with source "question_bank". Only write new questions (source "generated") to cover
+   topics the references miss. Never mark a question as question_bank unless it comes from the list.
 1. Generate a matchScore from 0 to 100.
 2. Generate at least 5 technicalQuestions relevant to the
    candidate's skills and the job description.
@@ -102,13 +126,10 @@ try {
 
     const report = JSON.parse(response.text);
 
-    console.log("Generated behavioral questions:",
-  report.behavorialQuestions?.length ?? 0
-);
-
-    console.log("Generated behavioral questions:",
-      report.behavioralQuestions?.length ?? 0
-    );
+    // keep the retrieved questions with the report so the grounding is visible and auditable
+    report.referenceQuestions = referenceQuestions.map(({ _id, question, type, topic, company, score }) => ({
+        questionId: _id, question, type, topic, company, score,
+    }))
 
     return report;
   } catch (error) {

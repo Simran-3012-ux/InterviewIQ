@@ -118,6 +118,63 @@ $low: #22c55e;
 
     .download-error { font-size: 0.75rem; color: $high; }
 
+    .mock-interview-btn {
+        width: 100%;
+        padding: 0.7rem 0.8rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: $text;
+        background: $surface;
+        border: 1px solid $accent;
+        border-radius: 0.6rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        &:hover { background: rgba(192, 38, 211, 0.15); transform: translateY(-1px); }
+    }
+
+    .source-badge {
+        display: inline-block;
+        margin-left: 0.5rem;
+        padding: 0.1rem 0.5rem;
+        font-size: 0.62rem;
+        font-weight: 600;
+        vertical-align: middle;
+        color: #5ec4d6;
+        background: rgba(94, 196, 214, 0.1);
+        border: 1px solid rgba(94, 196, 214, 0.35);
+        border-radius: 999px;
+    }
+
+    .reference-questions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        li {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            padding: 0.55rem 0.7rem;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            color: #d8d3df;
+            background: $surface;
+            border: 1px solid $border;
+            border-radius: 0.6rem;
+            span { font-size: 0.65rem; color: $muted; text-transform: capitalize; }
+        }
+    }
+
+    .reference-note { font-size: 0.7rem; color: $muted; line-height: 1.4; }
+
     // ---------- Main content ----------
     .interview-main {
         display: flex;

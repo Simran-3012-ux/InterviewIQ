@@ -1,11 +1,15 @@
 {
   "name": "yt-genai",
   "version": "1.0.0",
-  "description": "",
+  "description": "InterviewIQ backend: AI interview preparation API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon server.js"
+    "dev": "npx nodemon server.js",
+    "start": "node server.js",
+    "seed:questions": "node scripts/seedQuestionBank.js",
+    "create:vector-index": "node scripts/createVectorIndex.js",
+    "export:answers": "node scripts/exportAnswers.js",
+    "eval:grader": "node scripts/evaluateGrader.js"
   },
   "keywords": [],
   "author": "",

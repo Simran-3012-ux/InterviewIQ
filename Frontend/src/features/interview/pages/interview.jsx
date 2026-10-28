@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import "../../../style/interview.scss"
 import {useInterview} from '../hooks/useInterview.js'
 import { SparkleIcon } from '../components/Icons'
@@ -32,7 +32,10 @@ const QuestionList = ({ items }) => {
                             aria-expanded={isOpen}
                         >
                             <span className="question-number">Q{i + 1}</span>
-                            <span className="question-text">{item.question}</span>
+                            <span className="question-text">
+                                {item.question}
+                                {item.source === "question_bank" && <span className="source-badge">From question bank</span>}
+                            </span>
                             <span className="question-toggle">{isOpen ? '−' : '+'}</span>
                         </button>
                         {isOpen && (
@@ -80,6 +83,7 @@ const Interview = () => {
     const [active, setActive] = useState("technical")
     const {report, loading, getReportById, getResumePdf} = useInterview()
     const {interviewId} = useParams()
+    const navigate = useNavigate()
     const [downloading, setDownloading] = useState(false)
     const [downloadError, setDownloadError] = useState("")
 
@@ -139,6 +143,13 @@ const Interview = () => {
                     <div className="nav-footer">
                         <button
                             type="button"
+                            className="mock-interview-btn"
+                            onClick={() => navigate(`/interview/${report._id}/mock`)}
+                        >
+                            Start voice mock interview
+                        </button>
+                        <button
+                            type="button"
                             className="download-resume-btn"
                             onClick={handleDownloadResume}
                             disabled={downloading}
@@ -168,6 +179,23 @@ const Interview = () => {
                             </span>
                         ))}
                     </div>
+
+                    {report.referenceQuestions?.length > 0 && (
+                        <div className="reference-questions">
+                            <h3 className="gaps-title">Grounded in real questions</h3>
+                            <p className="reference-note">
+                                Retrieved from the question bank by vector search and given to the AI as context.
+                            </p>
+                            <ul>
+                                {report.referenceQuestions.slice(0, 6).map((q) => (
+                                    <li key={q.question}>
+                                        {q.question}
+                                        <span>{q.topic}{q.company && q.company !== "unspecified" ? ` · ${q.company}` : ""}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </aside>
             </div>
         </main>
