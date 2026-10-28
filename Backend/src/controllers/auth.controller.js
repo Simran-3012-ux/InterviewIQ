@@ -3,6 +3,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const blacklistTokenModel = require('../models/blacklist.model');
 
+// HTTP-only so page scripts cannot read the token; secure (HTTPS only) in production
+const cookieOptions = {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000,
+}
+
 
 /** 
  * @name registerUserController
@@ -38,7 +46,7 @@ async function registerUserController(req, res) {
      { expiresIn: '1d' }
     );
 
-    res.cookie('token', token)
+    res.cookie('token', token, cookieOptions)
 
     res.status(201).json({
         message: 'User registered successfully',
@@ -83,7 +91,7 @@ async function loginUserController(req, res) {
      { expiresIn: '1d' }
     );
 
-    res.cookie('token', token)
+    res.cookie('token', token, cookieOptions)
 
     res.status(200).json({
         message: 'User logged in successfully',
@@ -103,7 +111,7 @@ async function logoutUserController(req, res) {
         await blacklistTokenModel.create({ token });
     }
 
-    res.clearCookie('token');
+    res.clearCookie('token', cookieOptions);
 
     res.status(200).json({
         message: 'User logged out successfully'

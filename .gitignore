@@ -26,3 +26,6 @@ un
 
 # Cached AI grades used by the grader evaluation (regenerated on demand)
 Backend/eval/cache/
+
+# Chrome downloaded by Puppeteer
+Backend/.cache/

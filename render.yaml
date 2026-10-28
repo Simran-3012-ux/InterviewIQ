@@ -1,0 +1,21 @@
+# Render Blueprint: deploys InterviewIQ as a single web service.
+# The Express backend serves the API under /api and the built React app for everything else.
+services:
+  - type: web
+    name: interviewiq
+    runtime: node
+    plan: free
+    buildCommand: cd Backend && npm install && cd ../Frontend && npm install --include=dev && npm run build
+    startCommand: cd Backend && node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false

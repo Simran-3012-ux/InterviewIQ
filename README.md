@@ -43,7 +43,7 @@ Key characteristics:
 
 ## Features
 
-- **Authentication:** user registration and login with bcrypt password hashing, JWT stored in a cookie, and token blacklisting on logout.
+- **Authentication:** user registration and login with bcrypt password hashing, JWT stored in an HTTP-only cookie, and token blacklisting on logout.
 - **Resume parsing:** PDF upload (up to 3 MB) with server-side text extraction using `pdf-parse`.
 - **Match score:** a score from 0 to 100 indicating how closely the candidate's profile fits the job description.
 - **Technical questions:** role-specific questions, each with the interviewer's intention and a suggested approach to answering.
@@ -129,7 +129,7 @@ When the interview ends, three agents with distinct roles review the transcript,
 | AI | Google Gemini (`@google/genai`): structured JSON output via Zod schemas, audio transcription, `gemini-embedding-001` embeddings |
 | Audio | MediaRecorder, Web Audio API, Speech Synthesis API |
 | Database | MongoDB Atlas with Mongoose and Atlas Vector Search |
-| Authentication and Security | JWT, bcryptjs, cookie-based sessions, token blacklist, CORS |
+| Authentication and Security | JWT, bcryptjs, HTTP-only cookies, token blacklist, CORS |
 
 ## Architecture
 
@@ -159,6 +159,7 @@ When the interview ends, three agents with distinct roles review the transcript,
 
 ```
 InterviewIQ/
+├── render.yaml                    # Render deployment blueprint
 ├── docs/screenshots/              # Images used in this README
 ├── Backend/
 │   ├── server.js                  # Entry point
@@ -262,10 +263,32 @@ Open http://localhost:5173, create an account and generate an interview report. 
 | `npm run export:answers` | Export mock interview answers for hand grading |
 | `npm run eval:grader` | Measure AI grading agreement with hand grades |
 
+## Deployment
+
+The application is deployed as a single web service: in production, the Express server serves the API under `/api` and the built React application for all other routes. Because the frontend and API share one origin, the authentication cookie works without cross-site configuration.
+
+The repository contains a [Render](https://render.com) Blueprint (`render.yaml`) that builds both parts and starts the server.
+
+1. In MongoDB Atlas, open **Network Access** and allow access from anywhere (`0.0.0.0/0`), since Render does not use fixed IP addresses.
+2. In Render, select **New > Blueprint**, connect the GitHub repository and choose `render.yaml`.
+3. Enter the values for `MONGO_URI` and `GEMINI_API_KEY` when prompted. `JWT_SECRET` is generated automatically.
+4. After the first deploy, open the service URL. The health check is available at `/api/health`.
+
+| Environment variable | Purpose |
+|---|---|
+| `MONGO_URI` | MongoDB Atlas connection string |
+| `GEMINI_API_KEY` | Google Gemini API key |
+| `JWT_SECRET` | Secret used to sign JWTs |
+| `NODE_ENV` | Set to `production` (enables secure cookies) |
+| `CLIENT_ORIGIN` | Optional: allowed origins for CORS when the frontend is hosted separately |
+| `VITE_API_URL` | Optional, frontend build time: API base URL when the frontend is hosted separately |
+
+On the free plan the service sleeps after a period of inactivity, so the first request afterwards can take up to a minute.
+
 ## Security
 
 - Passwords are hashed with bcrypt and never stored in plain text.
-- JWTs are stored in a cookie, with an `Authorization: Bearer` header supported for API clients.
+- JWTs are stored in an HTTP-only, SameSite=Lax cookie (marked Secure in production), with an `Authorization: Bearer` header supported for API clients.
 - Tokens are blacklisted in MongoDB on logout to prevent reuse.
 - Reports are always queried by owner, so users can access only their own data.
 - File uploads are limited to 3 MB, and secrets are kept in a git-ignored `.env` file.
@@ -274,9 +297,8 @@ Open http://localhost:5173, create an account and generate an interview report. 
 
 - Expand the question bank with company-tagged questions collected from interview experiences
 - Shareable report links and PDF export of the complete report
-- Cloud deployment (Vercel and Render) with environment-based API URLs
 - Unit and integration tests
-- HTTP-only, secure and SameSite flags on the auth cookie, plus rate limiting on login
+- Rate limiting on login and on AI endpoints
 
 ## Author
 

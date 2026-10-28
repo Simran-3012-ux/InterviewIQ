@@ -139,7 +139,10 @@ try {
 }
 
 async function generatePdfFromHtml(htmlContent){
-    const browser = await puppeteer.launch()
+    // --no-sandbox is required inside most hosting containers (Render, Docker)
+    const browser = await puppeteer.launch({
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    })
     try{
         const page = await browser.newPage();
         await page.setContent(htmlContent, { waitUntil: "networkidle0"})
